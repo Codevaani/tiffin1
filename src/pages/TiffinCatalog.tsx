@@ -14,67 +14,75 @@ import gujaratiTiffin from "@/assets/gujarati-tiffin.jpg";
 const tiffins = [
   {
     id: 1,
-    name: "North Indian Special",
+    name: "North Indian Royal",
     price: 249,
     originalPrice: 299,
     rating: 4.8,
-    reviews: 234,
+    reviews: 2534,
     cookTime: "25 min",
     serves: "1-2",
     category: "North Indian",
     image: northIndianTiffin,
-    description: "Butter chicken, naan, basmati rice, dal makhani, raita, pickle",
-    tags: ["Popular", "Spicy"],
+    description: "Premium butter chicken, handmade naan, fragrant basmati rice, creamy dal makhani, cooling mint raita, traditional pickle",
+    tags: ["Chef's Special", "Most Popular"],
     isVeg: false,
-    calories: 650
+    calories: 650,
+    protein: "35g",
+    discount: 17
   },
   {
     id: 2,
-    name: "South Indian Classic",
+    name: "South Indian Authentic", 
     price: 199,
     originalPrice: 249,
     rating: 4.9,
-    reviews: 189,
+    reviews: 3127,
     cookTime: "20 min",
     serves: "1-2",
     category: "South Indian",
     image: southIndianTiffin,
-    description: "Sambar, rasam, coconut rice, vegetable curry, papadum, chutney",
+    description: "Traditional sambar with vegetables, tangy rasam, aromatic coconut rice, seasonal vegetable curry, homemade coconut chutney, crispy papadum",
     tags: ["Vegetarian", "Traditional"],
     isVeg: true,
-    calories: 520
+    calories: 520,
+    protein: "15g",
+    discount: 20
   },
   {
     id: 3,
-    name: "Healthy Delight",
+    name: "Wellness Pro",
     price: 299,
     originalPrice: 349,
     rating: 4.7,
-    reviews: 156,
+    reviews: 1876,
     cookTime: "30 min",
     serves: "1",
     category: "Healthy",
     image: healthyTiffin,
-    description: "Grilled chicken, quinoa salad, roasted vegetables, clear soup, fruits",
-    tags: ["Healthy", "Protein Rich"],
+    description: "Grilled lean protein, nutrient-rich quinoa power bowl, superfood salad with avocado, clear detox soup, seasonal fresh fruits",
+    tags: ["High Protein", "Keto Friendly"],
     isVeg: false,
-    calories: 480
+    calories: 480,
+    protein: "40g",
+    discount: 14
   },
   {
     id: 4,
-    name: "Gujarati Thali",
+    name: "Gujarati Royal Thali",
     price: 229,
     originalPrice: 279,
     rating: 4.6,
-    reviews: 98,
+    reviews: 987,
     cookTime: "25 min",
     serves: "1-2",
     category: "Gujarati",
     image: gujaratiTiffin,
-    description: "Dhokla, khichdi, kadhi, bhindi, roti, pickle, sweet dish",
+    description: "Fluffy dhokla, comforting khichdi, traditional kadhi, bhindi sabzi, soft roti, tangy pickle, authentic sweet dish",
     tags: ["Sweet & Savory", "Traditional"],
     isVeg: true,
-    calories: 580
+    calories: 580,
+    protein: "18g",
+    discount: 18
   },
   {
     id: 5,
@@ -82,31 +90,71 @@ const tiffins = [
     price: 279,
     originalPrice: 329,
     rating: 4.8,
-    reviews: 167,
+    reviews: 1673,
     cookTime: "35 min",
     serves: "2",
     category: "Punjabi",
     image: northIndianTiffin,
-    description: "Chole bhature, rajma, jeera rice, lassi, pickle, papad",
+    description: "Authentic chole bhature, rich rajma curry, jeera rice, creamy lassi, traditional pickle, crispy papad",
     tags: ["Hearty", "Popular"],
     isVeg: true,
-    calories: 720
+    calories: 720,
+    protein: "22g",
+    discount: 15
   },
   {
     id: 6,
-    name: "Executive Special",
+    name: "Executive Premium",
     price: 349,
     originalPrice: 399,
     rating: 4.9,
-    reviews: 203,
+    reviews: 2034,
     cookTime: "30 min",
     serves: "1",
     category: "Premium",
     image: healthyTiffin,
-    description: "Grilled fish, brown rice, exotic salad, soup, dessert, fresh juice",
+    description: "Grilled premium fish, brown rice pilaf, exotic mixed greens salad, clear vegetable soup, gourmet dessert, fresh juice",
     tags: ["Premium", "Executive"],
     isVeg: false,
-    calories: 520
+    calories: 520,
+    protein: "38g",
+    discount: 13
+  },
+  {
+    id: 7,
+    name: "Bengali Delicacy",
+    price: 259,
+    originalPrice: 309,
+    rating: 4.7,
+    reviews: 1245,
+    cookTime: "28 min",
+    serves: "1-2",
+    category: "Bengali",
+    image: gujaratiTiffin,
+    description: "Traditional fish curry, steamed rice, dal, mixed vegetable, begun bharta, mishti doi",
+    tags: ["Authentic", "Fish Special"],
+    isVeg: false,
+    calories: 595,
+    protein: "32g",
+    discount: 16
+  },
+  {
+    id: 8,
+    name: "Continental Breakfast",
+    price: 199,
+    originalPrice: 249,
+    rating: 4.5,
+    reviews: 834,
+    cookTime: "15 min",
+    serves: "1",
+    category: "Continental",
+    image: healthyTiffin,
+    description: "Fresh croissants, seasonal fruit bowl, Greek yogurt parfait, premium coffee, cheese selection",
+    tags: ["Breakfast", "International"],
+    isVeg: true,
+    calories: 420,
+    protein: "16g",
+    discount: 20
   }
 ];
 
@@ -289,16 +337,21 @@ const TiffinCatalog = () => {
                     </div>
                     
                     <div className="flex items-center justify-between">
-                      <div className="text-xs text-muted-foreground">
-                        {tiffin.reviews} reviews
+                      <div className="text-xs text-muted-foreground flex items-center gap-4">
+                        <span>{tiffin.reviews.toLocaleString()} reviews</span>
+                        <span>{tiffin.protein} protein</span>
                       </div>
-                      <Button 
-                        className="bg-gradient-primary shadow-glow hover:shadow-premium transition-all duration-300" 
-                        asChild
-                      >
-                        <Link to={`/tiffin/${tiffin.id}`}>View Details</Link>
-                      </Button>
+                      <Badge className="bg-success/10 text-success text-xs">
+                        {tiffin.discount}% OFF
+                      </Badge>
                     </div>
+                    
+                    <Button 
+                      className="w-full bg-gradient-primary shadow-glow hover:shadow-luxury transition-all duration-300 text-lg py-6 mt-4" 
+                      asChild
+                    >
+                      <Link to={`/tiffin/${tiffin.id}`}>Order Now - ₹{tiffin.price}</Link>
+                    </Button>
                   </div>
                 </Card>
               </motion.div>

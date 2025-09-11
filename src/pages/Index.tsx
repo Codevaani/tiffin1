@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Clock, Shield, Truck } from "lucide-react";
+import { Star, Clock, Shield, Truck, ChefHat, Award, Leaf, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-tiffin.jpg";
 import northIndianTiffin from "@/assets/north-indian-tiffin.jpg";
 import southIndianTiffin from "@/assets/south-indian-tiffin.jpg";
 import healthyTiffin from "@/assets/healthy-tiffin.jpg";
+import PremiumFeatures from "@/components/PremiumFeatures";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import SubscriptionPlans from "@/components/SubscriptionPlans";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -137,10 +140,10 @@ const Index = () => {
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {[
-              { icon: Clock, title: "Always Fresh", desc: "Prepared daily with fresh ingredients" },
-              { icon: Shield, title: "Quality Assured", desc: "Hygienically prepared in certified kitchens" },
-              { icon: Truck, title: "On-Time Delivery", desc: "Delivered hot and fresh to your location" },
-              { icon: Star, title: "Premium Quality", desc: "Restaurant-quality meals at home prices" }
+              { icon: ChefHat, title: "Master Chef Curated", desc: "Recipes by award-winning chefs with 20+ years experience" },
+              { icon: Award, title: "ISO Certified", desc: "Prepared in internationally certified facilities" },
+              { icon: Leaf, title: "Farm Fresh Daily", desc: "Organic ingredients sourced from local farms" },
+              { icon: Sparkles, title: "AI Nutrition", desc: "Personalized recommendations based on health goals" }
             ].map((feature, index) => (
               <motion.div key={index} variants={fadeInUp}>
                 <Card className="p-6 text-center shadow-soft hover:shadow-glow transition-all duration-300 bg-gradient-card">
@@ -179,24 +182,33 @@ const Index = () => {
             {[
               { 
                 image: northIndianTiffin, 
-                name: "North Indian Special", 
+                name: "North Indian Royal", 
                 price: "₹249", 
+                originalPrice: "₹299",
                 rating: 4.8,
-                description: "Butter chicken, naan, rice, dal, raita"
+                orders: "2.5K+ orders",
+                description: "Premium butter chicken, handmade naan, basmati rice, dal makhani, mint raita",
+                badges: ["Chef's Special", "Most Popular"]
               },
               { 
                 image: southIndianTiffin, 
-                name: "South Indian Classic", 
+                name: "South Indian Authentic", 
                 price: "₹199", 
+                originalPrice: "₹249",
                 rating: 4.9,
-                description: "Sambar, rasam, rice, vegetables, chutney"
+                orders: "3.1K+ orders",
+                description: "Traditional sambar, tangy rasam, coconut rice, seasonal vegetables, homemade chutney",
+                badges: ["Vegetarian", "Traditional"]
               },
               { 
                 image: healthyTiffin, 
-                name: "Healthy Delight", 
+                name: "Wellness Pro", 
                 price: "₹299", 
+                originalPrice: "₹349",
                 rating: 4.7,
-                description: "Grilled protein, quinoa, fresh salad, soup"
+                orders: "1.8K+ orders",
+                description: "Grilled lean protein, quinoa power bowl, superfood salad, detox soup",
+                badges: ["High Protein", "Keto Friendly"]
               }
             ].map((tiffin, index) => (
               <motion.div key={index} variants={fadeInUp}>
@@ -230,38 +242,127 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Premium Features Section */}
+      <PremiumFeatures />
+
+      {/* Subscription Plans */}
+      <SubscriptionPlans />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-hero">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-24 bg-gradient-hero relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-48 h-48 bg-accent rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Ready to Start Your Tiffin Journey?
+            <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2">
+              <Sparkles className="h-4 w-4 mr-2" />
+              Limited Time Offer
+            </Badge>
+            
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Start Your Premium
+              <br />
+              Tiffin Experience
             </h2>
-            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-              Join thousands of satisfied customers who trust us for their daily meals
+            
+            <p className="text-white/90 text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
+              Join over 50,000 satisfied customers who have transformed their daily dining. 
+              Get your first week at 50% off with free delivery.
             </p>
-            <Button 
-              size="lg" 
-              className="bg-white text-primary hover:bg-white/90 shadow-premium text-lg px-8 py-6"
-              asChild
-            >
-              <Link to="/menu">Order Your First Tiffin</Link>
-            </Button>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Button 
+                size="lg" 
+                className="bg-white text-primary hover:bg-white/90 shadow-elevated text-xl px-10 py-8 group"
+                asChild
+              >
+                <Link to="/menu">
+                  <Sparkles className="h-5 w-5 mr-2 group-hover:rotate-12 transition-transform" />
+                  Start Free Trial
+                </Link>
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white/30 text-white hover:bg-white/10 text-xl px-10 py-8"
+              >
+                View All Plans
+              </Button>
+            </div>
+
+            <div className="flex items-center justify-center gap-8 text-white/80 text-sm">
+              <div className="flex items-center gap-2">
+                <Shield className="h-4 w-4" />
+                <span>30-day guarantee</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Star className="h-4 w-4" />
+                <span>4.9/5 rating</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="h-4 w-4" />
+                <span>Cancel anytime</span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-card border-t border-border py-12">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
-            TiffinDelight
+      <footer className="bg-gradient-surface border-t border-border py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div className="col-span-2">
+              <div className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
+                TiffinDelight
+              </div>
+              <p className="text-muted-foreground leading-relaxed mb-6 max-w-md">
+                Elevating daily dining with premium quality tiffin services. 
+                From farm-fresh ingredients to your doorstep in 30 minutes.
+              </p>
+              <div className="flex items-center gap-4">
+                <Badge className="bg-primary/10 text-primary">ISO Certified</Badge>
+                <Badge className="bg-primary/10 text-primary">50K+ Customers</Badge>
+                <Badge className="bg-primary/10 text-primary">4.9★ Rating</Badge>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-muted-foreground">
+                <li><Link to="/menu" className="hover:text-primary transition-colors">Our Menu</Link></li>
+                <li><Link to="#" className="hover:text-primary transition-colors">Subscription Plans</Link></li>
+                <li><Link to="#" className="hover:text-primary transition-colors">About Us</Link></li>
+                <li><Link to="#" className="hover:text-primary transition-colors">Contact</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Support</h4>
+              <ul className="space-y-2 text-muted-foreground">
+                <li><Link to="#" className="hover:text-primary transition-colors">Help Center</Link></li>
+                <li><Link to="#" className="hover:text-primary transition-colors">Track Order</Link></li>
+                <li><Link to="#" className="hover:text-primary transition-colors">Refund Policy</Link></li>
+                <li><Link to="/admin" className="hover:text-primary transition-colors">Admin Portal</Link></li>
+              </ul>
+            </div>
           </div>
-          <p>© 2024 TiffinDelight. All rights reserved.</p>
+          
+          <div className="border-t border-border pt-8 text-center text-muted-foreground">
+            <p>© 2024 TiffinDelight. All rights reserved. | Made with ❤️ in India</p>
+          </div>
         </div>
       </footer>
     </div>
