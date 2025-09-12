@@ -376,7 +376,7 @@ const TiffinDetail = () => {
               </div>
             </div>
           </Card>
-        </div>
+        </motion.div>
 
         {/* Reviews Section */}
         <motion.div

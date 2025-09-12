@@ -33,7 +33,7 @@ const Index = () => {
       <motion.nav 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="fixed top-0 w-full bg-background/80 backdrop-blur-lg border-b border-border z-50"
+        className="fixed top-0 w-full bg-background/80 backdrop-blur-sm border-b border-border z-50"
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
@@ -255,8 +255,8 @@ const Index = () => {
       <section className="py-24 bg-gradient-hero relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-48 h-48 bg-accent rounded-full blur-3xl" />
+          <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-xl" />
+          <div className="absolute bottom-10 right-10 w-48 h-48 bg-accent rounded-full blur-xl" />
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
