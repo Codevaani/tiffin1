@@ -10,7 +10,7 @@ import southIndianTiffin from "@/assets/south-indian-tiffin.jpg";
 import healthyTiffin from "@/assets/healthy-tiffin.jpg";
 import PremiumFeatures from "@/components/PremiumFeatures";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import SubscriptionPlans from "@/components/SubscriptionPlans";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -46,6 +46,7 @@ const Index = () => {
             <Link to="/admin" className="text-muted-foreground hover:text-primary transition-colors">
               Admin
             </Link>
+            <ThemeToggle />
             <Button size="sm" className="bg-gradient-primary shadow-glow">
               Order Now
             </Button>
@@ -244,9 +245,6 @@ const Index = () => {
 
       {/* Premium Features Section */}
       <PremiumFeatures />
-
-      {/* Subscription Plans */}
-      <SubscriptionPlans />
 
       {/* Testimonials Section */}
       <TestimonialsSection />
